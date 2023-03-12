@@ -8,8 +8,16 @@ let data = {
   }
 }
 
+let results = {
+  rate: data.selectedProgram,
+}
+
 const getData = () => {
   return { ...data }
+}
+
+const getResults = () => {
+  return { ...results }
 }
 
 const setData = (newData) => {
@@ -17,7 +25,12 @@ const setData = (newData) => {
     ...data,
     ...newData
   }
-  console.log(data)
+
+  results = {
+    rate: data.selectedProgram
+  }
+
+  console.log(results)
 }
 
-export { getData, setData }
+export { getData, setData, getResults }

@@ -1,5 +1,8 @@
 let data = {
   selectedProgram: 0.1,
+  cost: 12000000,
+  minPrice: 375000,
+  maxPrice: 100000000,
   programs: {
     base: 0.1,
     it: 0.047,
@@ -21,6 +24,15 @@ const getResults = () => {
 }
 
 const setData = (newData) => {
+
+  // check 
+  if (newData.onUpdate === 'updateCost') {
+    if (newData.cost < data.minPrice) newData.cost = data.minPrice
+
+    if (newData.cost > data.maxPrice) newData.cost = data.maxPrice
+  }
+
+
   data = {
     ...data,
     ...newData
@@ -30,7 +42,7 @@ const setData = (newData) => {
     rate: data.selectedProgram
   }
 
-  console.log(results)
+  console.log(data)
 }
 
 export { getData, setData, getResults }
